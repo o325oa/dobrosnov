@@ -87,11 +87,14 @@ WSGI_APPLICATION = 'furniture_site.wsgi.application'
 
 DATABASE_URL = "postgresql://postgres:gfrEcNbpEDNHiebrZUKRVxoxvECDAonY@ballast.proxy.rlwy.net:22107/railway"
 
+import dj_database_url
+
 DATABASES = {
     'default': dj_database_url.config(
-        default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'),  # Для локальной разработки
+        default='postgresql://postgres:gfrEcNbpEDNHiebrZUKRVxoxvECDAonY@ballast.proxy.rlwy.net:22107/railway',
         conn_max_age=600,
-        ssl_require=True
+        conn_health_checks=True,
+        ssl_require=True  # Включение SSL
     )
 }
 
