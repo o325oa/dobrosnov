@@ -85,12 +85,13 @@ WSGI_APPLICATION = 'furniture_site.wsgi.application'
 #     }
 # }
 
-# DATABASE_URL = postgresql://postgres:gfrEcNbpEDNHiebrZUKRVxoxvECDAonY@ballast.proxy.rlwy.net:22107/railway
+DATABASE_URL = "postgresql://postgres:gfrEcNbpEDNHiebrZUKRVxoxvECDAonY@ballast.proxy.rlwy.net:22107/railway"
+
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL'),  # Автоматически берётся из Railway
+        default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'),  # Для локальной разработки
         conn_max_age=600,
-        ssl_require=True  # Важно для Railway!
+        ssl_require=True
     )
 }
 
