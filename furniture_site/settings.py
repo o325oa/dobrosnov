@@ -113,6 +113,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://доброснов.рф',
+    'https://*.railway.app', 
+]
+
+CSRF_COOKIE_SECURE = True  
+SESSION_COOKIE_SECURE = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
