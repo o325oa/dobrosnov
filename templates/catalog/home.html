@@ -29,7 +29,7 @@
         <div class="carousel-slide">
             <img src="{% static 'images/hero3.png' %}" alt="Кухни">
             <div class="carousel-caption">
-                <h2>Кухни на заказ</h2>
+                <h2>Детские кроватки на заказ</h2>
                 <p>Индивидуальные решения для вашего дома</p>
                 <a href="{% url 'catalog' %}" class="btn btn-primary">В каталог</a>
             </div>
@@ -49,7 +49,7 @@
             <img src="{{ product.image.url }}" alt="{{ product.name }}">
             <h3>{{ product.name }}</h3>
             <p class="price">{{ product.price }} руб.</p>
-            <a href="#" class="btn btn-outline-primary">Подробнее</a>
+            <a href="{% url 'product_detail' product.id %}" class="btn btn-outline-primary">Подробнее</a>
         </div>
         {% endfor %}
     </div>
