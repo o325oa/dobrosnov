@@ -146,18 +146,31 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-AWS_STORAGE_BUCKET_NAME = 'Dobrosnov'
-MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.eu-central-003.backblazeb2.com/media/'
-AWS_S3_FILE_OVERWRITE = False  # Чтобы не перезаписывать файлы с одинаковыми именами
-AWS_DEFAULT_ACL = 'public-read'  # Или 'private', если файлы приватные
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# MEDIA_ROOT = BASE_DIR / 'media'
+# AWS_STORAGE_BUCKET_NAME = 'Dobrosnov'
+# MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.eu-central-003.backblazeb2.com/media/'
+# AWS_S3_FILE_OVERWRITE = False  # Чтобы не перезаписывать файлы с одинаковыми именами
+# AWS_DEFAULT_ACL = 'public-read'  # Или 'private', если файлы приватные
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# # MEDIA_ROOT = BASE_DIR / 'media'
 
-AWS_ACCESS_KEY_ID = 'ce31ebaa8fc9'
-AWS_SECRET_ACCESS_KEY = '003204bd7c6d2a2f9683aecf4ce1df0f83f29f35f2'
-AWS_STORAGE_BUCKET_NAME = 'Dobrosnov'
-AWS_S3_ENDPOINT_URL = 'https://s3.eu-central-003.backblazeb2.com'
+# AWS_ACCESS_KEY_ID = 'ce31ebaa8fc9'
+# AWS_SECRET_ACCESS_KEY = '003204bd7c6d2a2f9683aecf4ce1df0f83f29f35f2'
+# AWS_STORAGE_BUCKET_NAME = 'Dobrosnov'
+# AWS_S3_ENDPOINT_URL = 'https://s3.eu-central-003.backblazeb2.com'
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+
+AWS_ACCESS_KEY_ID = '9i4RqFVv6v3kwxsGpWYXZk'       # ключ доступа
+AWS_SECRET_ACCESS_KEY = '6o5M6N7GLbtgQTSQGh94AtzLH43fN3qRehvnpnFwjZvt'  # секретный ключ
+AWS_STORAGE_BUCKET_NAME = 'dobrosnov'     # название вашего бака
+AWS_S3_ENDPOINT_URL = 'hb.ru-msk.vkcloud-storage.ru'   # зависит от выбранной вами зоны доступности
+AWS_DEFAULT_ACL = None                             # ACL-правила по умолчанию
+AWS_QUERYSTRING_AUTH = False                       # отключаем авторизацию через строки GET-запросов
+AWS_S3_OBJECT_PARAMETERS = {                      # оптимизация загрузки
+    'CacheControl': 'max-age=86400',              # кэшировать изображения на стороне браузера на сутки
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
