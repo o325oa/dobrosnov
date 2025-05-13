@@ -145,8 +145,18 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+AWS_STORAGE_BUCKET_NAME = 'Dobrosnov'
+MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.eu-central-003.backblazeb2.com/media/'
+AWS_S3_FILE_OVERWRITE = False  # Чтобы не перезаписывать файлы с одинаковыми именами
+AWS_DEFAULT_ACL = 'public-read'  # Или 'private', если файлы приватные
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# MEDIA_ROOT = BASE_DIR / 'media'
+
+AWS_ACCESS_KEY_ID = 'ce31ebaa8fc9'
+AWS_SECRET_ACCESS_KEY = '003204bd7c6d2a2f9683aecf4ce1df0f83f29f35f2'
+AWS_STORAGE_BUCKET_NAME = 'Dobrosnov'
+AWS_S3_ENDPOINT_URL = 'https://s3.eu-central-003.backblazeb2.com'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
